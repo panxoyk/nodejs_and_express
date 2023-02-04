@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+mongoose.set('strictQuery', false)
+
 // NO GUARDAR PASSWORD EN GITHUB
 const url = process.env.MONGODB_URI
 
@@ -12,7 +14,11 @@ mongoose.connect(url)
     })
 
 const noteSchema = new mongoose.Schema({
-    content: String,
+    content: {
+        type: String,
+        minLength: 4,
+        required: true,
+    },
     date: Date,
     important: Boolean,
 })
