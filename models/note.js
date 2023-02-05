@@ -1,25 +1,15 @@
 const mongoose = require('mongoose')
 
-mongoose.set('strictQuery', false)
-
-// NO GUARDAR PASSWORD EN GITHUB
-const url = process.env.MONGODB_URI
-
-mongoose.connect(url)
-    .then(() => {
-        console.log('connected to MongoDB')
-    })
-    .catch((error) => {
-        console.log('error connecting to MongoDB:', error.message)
-    })
-
 const noteSchema = new mongoose.Schema({
     content: {
         type: String,
-        minLength: 4,
         required: true,
+        minLength: 4,        
     },
-    date: Date,
+    date: {
+        type: Date,
+        required: true
+    },
     important: Boolean,
 })
 
