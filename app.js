@@ -1,5 +1,7 @@
 const config = require('./utils/config')
 const express = require('express')
+require('express-async-errors') // elimina los try-catch
+// Si ocurre una excepción en una ruta async, la ejecución se pasa automáticamente al middleware de manejo de errores.
 const cors = require('cors')
 const notesRouter = require('./controllers/notes')
 const middleware = require('./utils/middleware')
