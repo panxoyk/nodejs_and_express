@@ -11,7 +11,7 @@ notesRouter.get('/', async (request, response) => {
 
 notesRouter.get('/:id', async (request, response) => {
     const note = await Note.findById(request.params.id)
-        
+
     if (note) {
         response.json(note)
     } else {
@@ -32,7 +32,7 @@ const getTokenForm = request => {
 notesRouter.post('/', async (request, response) => {
     const body = request.body
     const token = getTokenForm(request)
-    
+
     const decodenToken = jwt.verify(token, process.env.SECRET)
 
     if (!token || !decodenToken.id) {

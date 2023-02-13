@@ -20,7 +20,7 @@ mongoose.connect(config.MONGODB_URI)
     })
     .catch((error) => {
         logger.error('error connecting to MongoDB:', error.message)
-    })    
+    })
 
 app.use(cors())
 app.use(express.static('build'))
@@ -35,20 +35,3 @@ app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
 
 module.exports = app
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const PORT = process.env.PORT || 3001
